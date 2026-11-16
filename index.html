@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Willow Café — Coffee · Food · Books</title>
+    <meta
+      name="description"
+      content="Step into The Willow Café: a sunlit neighbourhood sanctuary for specialty single-origin coffee, artisan sourdough, curated books, and analog vinyl sessions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Willow Café" />
+    <meta property="og:title" content="The Willow Café — Coffee · Food · Books" />
+    <meta
+      property="og:description"
+      content="Good Food. Better Days. Explore our seasonal tasting menu, 3D café walk-through, curated bookshelves, vinyl listening room, and courtyard table reservations."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Willow Café — Coffee · Food · Books" />
+    <meta
+      name="twitter:description"
+      content="A warm neighbourhood café where people read, eat artisan sourdough & pasta, drink single-origin coffee, and listen to vinyl."
+    />
+
+    <!-- Google Fonts: Cormorant Garamond (Editorial Serif), DM Sans (Clean Body), Caveat (Chalkboard Accent), JetBrains Mono (Tabular Figures) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org CafeOrCoffeeShop Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "The Willow Café",
+        "slogan": "Good Food. Better Days.",
+        "description": "A warm, slow neighbourhood café offering single-origin specialty coffee, sourdough brunch, hand-rolled pasta, curated books, and analog vinyl listening sessions.",
+        "servesCuisine": ["Specialty Coffee", "Artisan Bakery", "Italian Pasta & Wood-Fired Pizza", "Brunch"],
+        "priceRange": "$$",
+        "telephone": "+91-98765-43210",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "88 Willow Green Arcade, Inner Brick Courtyard",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "KA",
+          "postalCode": "560038",
+          "addressCountry": "IN"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "08:00",
+            "closes": "23:59"
+          }
+        ],
+        "acceptsReservations": "True"
+      }
+    </script>
+    <script>
+      (function () {
+        try {
+          var mode = localStorage.getItem('willow_theme_mode');
+          var hour = new Date().getHours();
+          var isDay = hour >= 6 && hour < 18;
+          var effectiveTheme;
+          if (mode === 'light') {
+            effectiveTheme = 'light';
+          } else if (mode === 'dark') {
+            effectiveTheme = 'dark';
+          } else {
+            // Default: auto-switching based on user's local time (Day: light, Evening: dark)
+            effectiveTheme = isDay ? 'light' : 'dark';
+          }
+          if (effectiveTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="antialiased selection:bg-[#C9893B] selection:text-[#14100C]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

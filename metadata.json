@@ -1,0 +1,6 @@
+{
+  "name": "The Willow Café",
+  "description": "A warm, cinematic neighbourhood café website for Coffee, Food, Books, and Vinyl — featuring interactive 3D coffee & dish showcases, a virtual walk-through, working turntable, and table reservations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

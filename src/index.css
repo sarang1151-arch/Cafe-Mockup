@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-willow-cream: #F4EDE0;
+  --color-willow-paper: #FAF6F0;
+  --color-willow-parchment: #E8DEC8;
+  --color-willow-espresso: #2A1D14;
+  --color-willow-coffee: #14100C;
+  --color-willow-darkcard: #1C1611;
+  --color-willow-forest: #1F2E26;
+  --color-willow-amber: #C9893B;
+  --color-willow-amber-hover: #DDA052;
+  --color-willow-sage: #6E7F63;
+  --color-willow-sage-light: #9EB091;
+  --color-willow-walnut: #4A3323;
+}
+
+/* ==========================================================================
+   SEMANTIC THEME VARIABLES — LIGHT (CREAM) & DARK (COFFEE-BLACK)
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  --willow-bg: #F4EDE0;
+  --willow-surface: #FAF6F0;
+  --willow-subtle: #EAE0CE;
+  --willow-input: #FFFFFF;
+  --willow-footer: #E6DAC4;
+  --willow-nav: rgba(244, 237, 224, 0.94);
+
+  --willow-text: #2A1D14;
+  --willow-text-secondary: #4A3628;
+  --willow-text-muted: #69513F;
+
+  --willow-amber: #C9893B;
+  --willow-amber-hover: #B5762A;
+  --willow-amber-text: #9E631B;
+  --willow-sage: #4B5E42;
+
+  --willow-border: rgba(42, 29, 20, 0.14);
+  --willow-border-strong: rgba(42, 29, 20, 0.26);
+  --willow-btn-primary-bg: #2A1D14;
+  --willow-btn-primary-fg: #F4EDE0;
+  --willow-shadow: 0 12px 32px -10px rgba(42, 29, 20, 0.10);
+}
+
+html.dark {
+  color-scheme: dark;
+  --willow-bg: #14100C;
+  --willow-surface: #1C1611;
+  --willow-subtle: #251D16;
+  --willow-input: #14100C;
+  --willow-footer: #0E0B08;
+  --willow-nav: rgba(20, 16, 12, 0.94);
+
+  --willow-text: #F4EDE0;
+  --willow-text-secondary: #D8CCBA;
+  --willow-text-muted: #AC9D8A;
+
+  --willow-amber: #C9893B;
+  --willow-amber-hover: #DDA052;
+  --willow-amber-text: #DDA052;
+  --willow-sage: #9EB091;
+
+  --willow-border: rgba(244, 237, 224, 0.12);
+  --willow-border-strong: rgba(244, 237, 224, 0.25);
+  --willow-btn-primary-bg: #C9893B;
+  --willow-btn-primary-fg: #14100C;
+  --willow-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.48);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    scroll-behavior: auto;
+    background-color: var(--willow-bg);
+    color: var(--willow-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--willow-bg);
+    color: var(--willow-text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-editorial {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+    color: inherit;
+  }
+
+  .dark body {
+    letter-spacing: 0.01em;
+  }
+
+  /* When desktop fine-pointer is active, hide the default system cursor so only the cafe cup is shown */
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    html,
+    body,
+    *,
+    *::before,
+    *::after {
+      cursor: none !important;
+    }
+  }
+}
+
+/* Reusable semantic theme utilities */
+.willow-shell {
+  background-color: var(--willow-bg);
+  color: var(--willow-text);
+}
+
+.willow-card {
+  background-color: var(--willow-surface);
+  color: var(--willow-text);
+  border-color: var(--willow-border);
+  box-shadow: var(--willow-shadow);
+}
+
+.willow-subtle {
+  background-color: var(--willow-subtle);
+  color: var(--willow-text);
+  border-color: var(--willow-border);
+}
+
+/* Atmospheric overlays — strictly background-image ONLY so background-color is NEVER reset */
+.willow-atmosphere {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+}
+
+.willow-atmosphere::before,
+.willow-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: -140px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.willow-atmosphere::before {
+  background-image:
+    radial-gradient(ellipse 65% 50% at 18% 14%, rgba(201, 137, 59, 0.10), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 78% 42%, rgba(201, 137, 59, 0.055), transparent 72%);
+  transform: translate3d(var(--willow-atmo-x1, 0px), var(--willow-atmo-y1, 0px), 0);
+}
+
+.willow-atmosphere::after {
+  background-image:
+    radial-gradient(ellipse 55% 45% at 86% 78%, rgba(110, 127, 99, 0.085), transparent 70%),
+    radial-gradient(ellipse 48% 42% at 22% 84%, rgba(110, 127, 99, 0.055), transparent 72%);
+  transform: translate3d(var(--willow-atmo-x2, 0px), var(--willow-atmo-y2, 0px), 0);
+}
+
+html.dark .willow-atmosphere {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+}
+
+html.dark .willow-atmosphere::before {
+  background-image:
+    radial-gradient(ellipse 60% 45% at 20% 12%, rgba(201, 137, 59, 0.14), transparent 70%),
+    radial-gradient(ellipse 45% 38% at 76% 44%, rgba(201, 137, 59, 0.07), transparent 72%);
+}
+
+html.dark .willow-atmosphere::after {
+  background-image:
+    radial-gradient(ellipse 55% 50% at 82% 80%, rgba(31, 46, 38, 0.30), transparent 72%),
+    radial-gradient(ellipse 46% 42% at 18% 82%, rgba(31, 46, 38, 0.18), transparent 74%);
+}
+
+/* Tabular numerals for prices, counters, and hours */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hide scrollbars cleanly on horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* View Transition API circular reveal layering */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
